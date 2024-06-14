@@ -1,0 +1,86 @@
+{% load static custom_tags %}
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title> Films</title>
+        <link rel="stylesheet" href="{% static 'projet2/css/style1.css' %}">
+        <style>
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container .item {
+                margin: 10px;
+            }
+            .container img {
+                max-width: 800px; 
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+
+<div class ="header">
+    <nav>
+        <ul class ='menu'>
+            <li><a href = "http://localhost:8000/Acceuil/">Acceuil</a></li>
+            <li><a href = "http://localhost:8000/Analyse/">Analyse préliminaire</a></li>
+            <li><a href = "http://localhost:8000/Movies/">Films et téléfilms</a></li>
+            <li><a href = "http://localhost:8000/Short/">Courts Métrages</a></li>
+            <li><a href = "http://localhost:8000/Series/">Series / TvSeries</a></li>
+            <li><a href = "http://localhost:8000/ML/">Machine Learning</a></li>
+        </ul>
+
+    </nav>
+</div>
+<center><h1> Films et téléfilms</h1></center>
+<br>
+
+
+
+
+<center><img src="{% static 'images/Liste.jpg' %}" alt="Liste Image"/><img class="resized-img"src="{% static 'images/Moy_age.jpg' %}" alt="Moy_age Image"/> </center>
+<br><br><br><br><br><br><br><br>
+
+<center><img class="resized-img" src="{% static 'images/Nb_films.jpg' %}" alt="Nb_films Image"/> <img class="resized-img" src="{% static 'images/Duree.jpg' %}" alt="Duree Image"/> </center>
+<br><br><br><br><br><br><br><br>
+<center><img src="{% static 'images/Liste2.jpg' %}" alt="Liste2 Image"/></center> 
+<br><br><br><br><br><br><br><br>
+
+<center><img src="{% static 'images/Act_film.jpg' %}" alt="Act_film Image"/> <img src="{% static 'images/Act_serie.jpg' %}" alt="Act_serie Image"/> </center>
+
+<br><br><br><br><br><br><br><br>
+
+
+
+<div class="container">
+    <div class="item">
+        {{ plot_html|safe }} 
+    </div>
+    <div class="item">
+        <img src="{% static 'images/nb_votes.jpeg' %}" alt="nb_votes Image"/>
+    </div>
+</div>
+
+
+
+
+<div class ="header">
+    <nav>
+        <ul class ='menu'>
+            <li><a href = "http://localhost:8000/Acceuil/">Acceuil</a></li>
+            <li><a href = "http://localhost:8000/Analyse/">Analyse préliminaire</a></li>
+            <li><a href = "http://localhost:8000/Movies/">Films et téléfilms</a></li>
+            <li><a href = "http://localhost:8000/Short/">Courts Métrages</a></li>
+            <li><a href = "http://localhost:8000/Series/">Series / TvSeries</a></li>
+            <li><a href = "http://localhost:8000/ML/">Machine Learning</a></li>
+        </ul>
+
+    </nav>
+</div>
+
+
+
+</body>
+</html>

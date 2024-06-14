@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Machine Learning</title>
+    <link rel="stylesheet" href="{% static 'projet2/css/style1.css' %}">
+</head>
+<body>
+<div class="header">
+    <nav>
+        <ul class ='menu'>
+            <li><a href = "http://localhost:8000/Acceuil/">Acceuil</a></li>
+            <li><a href = "http://localhost:8000/Analyse/">Analyse préliminaire</a></li>
+            <li><a href = "http://localhost:8000/Movies/">Films et téléfilms</a></li>
+            <li><a href = "http://localhost:8000/Short/">Courts Métrages</a></li>
+            <li><a href = "http://localhost:8000/Series/">Series / TvSeries</a></li>
+            <li><a href = "http://localhost:8000/ML/">Machine Learning</a></li>
+        </ul>
+    </nav>
+</div>
+<center><h1>Machine Learning</h1></center>
+<br>
+<form>
+    <input type="search" name="q" placeholder="recherche">
+</form>
+<img src="{% static 'images/Box.jpg' %}" alt="Box Image"/>
+</body>
+</html>

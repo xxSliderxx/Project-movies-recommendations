@@ -1,0 +1,110 @@
+{% load static custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Machine Learning</title>
+    <link rel="stylesheet" href="{% static 'projet2/css/style1.css' %}">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <ul class="menu">
+                <li><a href="http://localhost:8000/Acceuil/">Acceuil</a></li>
+                <li><a href = "http://localhost:8000/Analyse/">Analyse préliminaire</a></li>
+                <li><a href="http://localhost:8000/Movies/">Films et téléfilms</a></li>
+                <li><a href="http://localhost:8000/Short/">Courts Métrages</a></li>
+                <li><a href="http://localhost:8000/Series/">Series / TvSeries</a></li>
+                <li><a href="http://localhost:8000/ML/">Machine Learning</a></li>
+            </ul>
+        </nav>
+    </div>
+    <center><h1>Machine Learning</h1></center>
+    <br>
+    <form method="get" action="{% url 'search' %}">
+        <p>Veuillez renseigner un film</p>
+        <input type="search" name="query" placeholder="Recherche">
+        <button type="submit">Rechercher</button>
+    </form>
+    <br><br>
+
+    {% if results %}
+    
+        <h2>Résultat de la recherche</h2>
+        <div class="result-container">
+            {% for movie in Res2 %}
+                {% if movie.poster_url %}
+                    <div class="poster">
+                        <img src="{{ movie.poster_url }}" alt="{{ movie.title }} Poster" class="ML-resized-img">
+                        <ul>
+                            <li>{{ movie.title }}</li>
+                            <li><p>Durée : {{ movie.runtimeMinutes }} minutes </p></li>
+                            <li><p>Note : {{ movie.averageRating }} </p></li>
+                            <li><p>Date : {{ movie.startYear }} </p></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <p>Aucune affiche disponible pour {{ movie.title }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <table border="1">
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        {% for column in columns %}
+                            <td>{{ result|get_item:column }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Films associés</h2>
+        <div class="result-container">
+            {% for movie in Res %}
+                {% if movie.poster_url %}
+                    <div class="poster">
+                        <img src="{{ movie.poster_url }}" alt="{{ movie.title }} Poster" class="ML-resized-img">
+                        <ul>
+                            <li>{{ movie.title }}</li>
+                            <li><p>Durée : {{ movie.runtimeMinutes }} minutes </p></li>
+                            <li><p>Note : {{ movie.averageRating }} </p></li>
+                            <li><p>Date : {{ movie.startYear }} </p></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <p>Aucune affiche disponible pour {{ movie.title }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie in Res %}
+                    <tr>
+                        {% for column in columns %}
+                            <td>{{ movie|get_item:column }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif no_results %}
+        <p>Aucun résultat pour "{{ query }}".</p>
+    {% endif %}
+</body>
+</html>
